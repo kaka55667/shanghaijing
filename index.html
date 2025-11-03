@@ -20,7 +20,7 @@
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.1"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="%238B4513" stroke-width="2"/></svg>');
         }
         
-        。container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
@@ -234,10 +234,51 @@
             margin: 40px 0;
         }
         
+        /* 神话人物介绍 */
         .character-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .carousel {
+                padding-top: 56.25%; /* 移动端使用16:9比例 */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel {
+                padding-top: 66.67%; /* 移动端使用3:2比例，显示更完整 */
+            }
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .character-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 600px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .character-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
         }
         
         .character-card {
@@ -457,10 +498,12 @@
             <nav>
                 <ul>
                     <li><a href="#nvwa">女娲</a></li>
-                    <li><a href="#gun">鲧</a></li>
-                    <li><a href="#yu">禹</a></li>
-                    <li><a href="#yi">羿</a></li>
-                    <li><a href="#beasts">山海神兽</a></li>
+                    <li><a href="#yu">大禹</a></li>
+                    <li><a href="#yi">后羿</a></li>
+                    <li><a href="#zhurong">祝融</a></li>
+                    <li><a href="#kuafu">夸父</a></li>
+                <li><a href="#fuxi">伏羲</a></li>
+                <li><a href="#beasts">山海神兽</a></li>
                 </ul>
             </nav>
         </div>
@@ -473,7 +516,7 @@
             <div class="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvQVpCDn0Ftim-ECrZ6_2LDCMxtCk6gAChx0AAiYWQVSaspxK2VVm_zYE.jpg" alt="女娲.jpg" />
+                        <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEwtRpCH684oL4tqmEYf55B16CDgx18AACMCQAAiYWQVRv88BruvkvRjYE.jpg" alt="女娲2.jpg" />
                         <div class="carousel-caption">
                             <h3>女娲补天</h3>
                             <p>创世女神女娲炼五色石补天，断鳌足以立四极，拯救苍生于水火之中。</p>
@@ -483,9 +526,9 @@
                     <div class="carousel-item">
                         <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvR5pCDxSziFAArUOhAmFrjpnvSDSbgACph0AAiYWQVRSJGTJQJbjqTYE.jpg" alt="i.jpg" />
                         <div class="carousel-caption">
-                            <h3>鲧禹治水</h3>
-                            <p>鲧盗息壤治水失败，其子禹继承父志，三过家门而不入，终成功治水。</p>
-                            <a href="#gunyu-detail">了解更多</a>
+                            <h3>大禹治水</h3>
+                            <p>大禹继承父志，三过家门而不入，采用疏导之法，终成功治理洪水。</p>
+                            <a href="#yu-detail">了解更多</a>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -501,7 +544,7 @@
                         <div class="carousel-caption">
                             <h3>山海经神兽</h3>
                             <p>探索《山海经》中千奇百怪的神兽与异兽，领略上古先民的奇幻想象。</p>
-                            <a href="#beasts-detail">了解更多</a>
+                            <a href="#beasts">了解更多</a>
                         </div>
                     </div>
                 </div>
@@ -523,27 +566,28 @@
             <h2 class="section-title">神话人物</h2>
             <div class="character-grid">
                 <div class="character-card" id="nvwa">
-                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvQVpCDn0Ftim-ECrZ6_2LDCMxtCk6gAChx0AAiYWQVSaspxK2VVm_zYE.jpg" alt="女娲.jpg" />
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEwtRpCH684oL4tqmEYf55B16CDgx18AACMCQAAiYWQVRv88BruvkvRjYE.jpg" alt="女娲2.jpg" />
                     <div class="character-card-content">
                         <h3>女娲</h3>
                         <p>创世女神，人类之母，人首蛇身，炼五色石补天，抟土造人，制定婚姻制度。</p>
                         <a href="#nvwa-detail">查看详情</a>
                     </div>
                 </div>
-                <div class="character-card" id="gun">
-                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvR5pCDxSziFAArUOhAmFrjpnvSDSbgACph0AAiYWQVRSJGTJQJbjqTYE.jpg" alt="i.jpg" />
-                    <div class="character-card-content">
-                        <h3>鲧</h3>
-                        <p>大禹之父，黄帝的后裔，因盗取天帝息壤治水失败而被处死于羽山。</p>
-                        <a href="#gunyu-detail">查看详情</a>
-                    </div>
-                </div>
+
                 <div class="character-card" id="yu">
                     <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvTtpCD9YBxwF8bMyJmEpqfN3R8OtFAACzR0AAiYWQVRsEkaZTaOvBzYE.jpg" alt="大禹.jpg" />
                     <div class="character-card-content">
                         <h3>大禹</h3>
                         <p>治水英雄，夏朝开国君主，继承父志治水成功，三过家门而不入。</p>
-                        <a href="#gunyu-detail">查看详情</a>
+                        <a href="#yu-detail">查看详情</a>
+                    </div>
+                </div>
+                <div class="character-card" id="fuxi">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvUFpCD-ncm3cQueO9AzUkH6pmqdoFgAC0x0AAiYWQVTE9FqJjo6_xDYE.png" alt="伏羲" />
+                    <div class="character-card-content">
+                        <h3>伏羲</h3>
+                        <p>人文始祖，一画开天，创造八卦，教会人们渔猎畜牧，发明文字。</p>
+                        <a href="#fuxi-detail">查看详情</a>
                     </div>
                 </div>
                 <div class="character-card" id="yi">
@@ -554,6 +598,23 @@
                         <a href="#yi-detail">查看详情</a>
                     </div>
                 </div>
+                <div class="character-card" id="zhurong">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEw3FpCIrm80uLqn1LhwREs0sif5HWbAAC7SQAAiYWQVSUAyghBY8qCDYE.jpg" alt="祝融.jpg" />
+                    <div class="character-card-content">
+                        <h3>祝融</h3>
+                        <p>火神，炎帝后裔，担任黄帝火正，发明钻木取火，与共工大战。</p>
+                        <a href="#zhurong-detail">查看详情</a>
+                    </div>
+                </div>
+                <div class="character-card" id="kuafu">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEw21pCIpQG1tzJI-fDxyalJMS4kXEmwAC5iQAAiYWQVRlUVmEhkDeiDYE.jpg" alt="夸父.jpg" />
+                    <div class="character-card-content">
+                        <h3>夸父</h3>
+                        <p>巨人族首领，为追赶太阳而奔走，最终渴死，手杖化为桃林。</p>
+                        <a href="#kuafu-detail">查看详情</a>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -566,7 +627,7 @@
                     <div class="character-card-content">
                         <h3>九尾狐</h3>
                         <p>青丘之山有兽焉，其状如狐而九尾，其音如婴儿，能食人，食者不蛊。</p>
-                        <a href="#beasts-detail">查看详情</a>
+                        <a href="#jiuweihu-detail">查看详情</a>
                     </div>
                 </div>
                 <div class="character-card">
@@ -574,7 +635,7 @@
                     <div class="character-card-content">
                         <h3>应龙</h3>
                         <p>龙五百年为角龙，千年为应龙，助黄帝战胜蚩尤，后又助大禹治水。</p>
-                        <a href="#beasts-detail">查看详情</a>
+                        <a href="#yinglong-detail">查看详情</a>
                     </div>
                 </div>
                 <div class="character-card">
@@ -582,7 +643,7 @@
                     <div class="character-card-content">
                         <h3>麒麟</h3>
                         <p>仁兽也，麋身牛尾一角，不履生虫，不折生草，有王者则至，无王者则不至。</p>
-                        <a href="#beasts-detail">查看详情</a>
+                        <a href="#qilin-detail">查看详情</a>
                     </div>
                 </div>
                 <div class="character-card">
@@ -590,7 +651,25 @@
                     <div class="character-card-content">
                         <h3>凤凰</h3>
                         <p>丹穴之山有鸟焉，其状如鸡，五采而文，名曰凤皇，首文曰德，翼文曰义。</p>
-                        <a href="#beasts-detail">查看详情</a>
+                        <a href="#fenghuang-detail">查看详情</a>
+                    </div>
+                </div>
+                <!-- 新增神兽：饕餮 -->
+                <div class="character-card">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEw85pCJKTTv3gRQVEYlASTm2GJFgvvgAClhkAAiYWSVRONcZVzdOlXDYE.jpg" alt="饕鬄.jpg" />
+                    <div class="character-card-content">
+                        <h3>饕餮</h3>
+                        <p>缙云氏有不才子，贪于饮食，冒于货贿，天下谓之饕餮，有首无身，食人未咽。</p>
+                        <a href="#taotie-detail">查看详情</a>
+                    </div>
+                </div>
+                <!-- 新增神兽：玄武 -->
+                <div class="character-card">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEw9lpCJMQnKsmqKy4Dclc9KFHQedWwQACohkAAiYWSVQxxFtpjZoMojYE.jpg" alt="玄武.jpg" />
+                    <div class="character-card-content">
+                        <h3>玄武</h3>
+                        <p>北方之神，龟蛇合体，为水神，居北海，象征长寿与吉祥，四象之一。</p>
+                        <a href="#xuanwu-detail">查看详情</a>
                     </div>
                 </div>
             </div>
@@ -602,7 +681,7 @@
     <!-- 详情页内容 -->
     <div id="nvwa-detail" class="detail-container">
         <div class="detail-header">
-            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvQVpCDn0Ftim-ECrZ6_2LDCMxtCk6gAChx0AAiYWQVSaspxK2VVm_zYE.jpg" alt="女娲.jpg" />
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEwtRpCH684oL4tqmEYf55B16CDgx18AACMCQAAiYWQVRv88BruvkvRjYE.jpg" alt="女娲2.jpg" />
             <div class="detail-title">
                 <h1>女娲</h1>
                 <p>创世女神，人类之母</p>
@@ -620,28 +699,68 @@
             <h2>文化影响</h2>
             <p>女娲是中华民族的共同人文始祖，是中华民族的母亲。女娲文化源远流长、博大精深，内容丰富，是史前文明和中华民族优秀的传统文化，也是已经开展的中国史前文明探源的重要研究对象。</p>
             
+            <h2>出处记载</h2>
+            <p>《山海经·大荒西经》："有神十人，名曰女娲之肠， becoms 于神，处栗广之野，横道而处。"</p>
+            <p>《淮南子·览冥训》："往古之时，四极废，九州裂，天不兼覆，地不周载，火爁焱而不灭，水浩洋而不息，猛兽食颛民，鸷鸟攫老弱。于是女娲炼五色石以补苍天，断鳌足以立四极，杀黑龙以济冀州，积芦灰以止淫水。"</p>
+            
             <a href="#" class="back-button">返回首页</a>
         </div>
     </div>
 
-    <div id="gunyu-detail" class="detail-container">
+    <div id="yu-detail" class="detail-container">
         <div class="detail-header">
-            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvQVpCDn0Ftim-ECrZ6_2LDCMxtCk6gAChx0AAiYWQVSaspxK2VVm_zYE.jpg" alt="女娲.jpg" />
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvTtpCD9YBxwF8bMyJmEpqfN3R8OtFAACzR0AAiYWQVRsEkaZTaOvBzYE.jpg" alt="大禹.jpg" />
             <div class="detail-title">
-                <h1>鲧禹治水</h1>
-                <p>父子两代的治水传奇</p>
+                <h1>大禹</h1>
+                <p>治水英雄，夏朝开国君主</p>
             </div>
         </div>
         <div class="detail-content">
-            <h2>鲧的传说</h2>
-            <p>鲧是中国上古时代汉族神话传说人物，黄帝的后代，大禹的父亲。鲧因治水失败，被刑罚致死。鲧死后尸体三年不腐烂，祝融用吴刀剖开他的肚子，禹就出来了，鲧的尸体化为黄熊。</p>
+            <h2>神话传说</h2>
+            <p>禹，姒姓夏后氏，名文命，号禹，后世尊称大禹，是黄帝轩辕氏玄孙。传说禹的父亲鲧治水失败后，禹继承父志，历经十三年终于成功治理了洪水。禹通过禅让制得到帝位，传说是夏后氏部落的首领，是中国历史上第一个世袭制王朝夏朝的奠基者。</p>
             
-            <h2>大禹治水</h2>
-            <p>禹，姒姓夏后氏，名文命，号禹，后世尊称大禹，是黄帝轩辕氏玄孙。通过禅让制得到帝位，传说是夏后氏部落的首领，是子承父位、中国奴隶制的创始人。禹是中国人民最敬重的古帝王之一，以治理洪水而闻名。</p>
-            <p>大禹治水13年，耗尽心血与体力，"三过家门而不入"，终于完成了这一件名垂青史的大业。他采用疏导的方法，把平地的积水导入江河，再引入海洋，终于制服了洪水，使老百姓得以从高地迁回平川居住和从事农业生产。</p>
+            <h2>主要事迹</h2>
+            <p>1. 大禹治水：大禹采用疏导的方法，开凿河道，将洪水引入大海，历时十三年，三过家门而不入，终于成功治理了洪水。</p>
+            <p>2. 划分九州：大禹治水成功后，将天下划分为九州，制定了贡赋制度，为中国古代政治制度奠定了基础。</p>
+            <p>3. 建立夏朝：大禹建立了中国历史上第一个世袭制王朝夏朝，标志着中国从原始社会进入奴隶社会。</p>
             
-            <h2>历史意义</h2>
-            <p>大禹治水不仅是一种历史记载，更是一种文化象征，代表着中华民族与自然抗争、自强不息的精神。大禹治水的成功，为夏朝的建立奠定了基础，也开创了中国历史上第一个世袭制王朝。</p>
+            <h2>文化象征</h2>
+            <p>大禹是中华民族精神的象征，他的治水精神代表着勤劳、智慧、坚韧不拔和无私奉献的品质。"三过家门而不入"的故事成为了大公无私的典范，激励着一代又一代的中国人。</p>
+            
+            <h2>出处记载</h2>
+            <p>《山海经·海内经》："鲧复生禹，帝乃命禹卒布土以定九州。"</p>
+            <p>《尚书·禹贡》："禹别九州，随山浚川，任土作贡。"</p>
+            <p>《史记·夏本纪》："禹伤先人父鲧功之不成受诛，乃劳身焦思，居外十三年，过家门不敢入。"</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+    </div>
+
+    <div id="fuxi-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvUFpCD-ncm3cQueO9AzUkH6pmqdoFgAC0x0AAiYWQVTE9FqJjo6_xDYE.png" alt="伏羲" />
+            <div class="detail-title">
+                <h1>伏羲</h1>
+                <p>人文始祖，一画开天</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>神话传说</h2>
+            <p>伏羲，又称宓羲、庖牺、包牺、伏戏，亦称牺皇、皇羲、太昊，是中国上古神话中的人文始祖，三皇之一。传说伏羲人首蛇身，与女娲兄妹相婚，生儿育女，创造了人类。伏羲也是中国最早的有文献记载的创世神之一。</p>
+            
+            <h2>主要事迹</h2>
+            <p>1. 创造八卦：伏羲仰观天文，俯察地理，中通人事，创造了八卦，开启了中华民族的文化之源。</p>
+            <p>2. 教会渔猎：伏羲教会人们结网捕鱼、驯养牲畜，使人类从采集狩猎时代进入畜牧时代。</p>
+            <p>3. 发明文字：伏羲发明了文字，取代了结绳记事，促进了文明的发展。</p>
+            <p>4. 制定嫁娶：伏羲制定了嫁娶制度，使人类从群婚状态进入对偶婚状态。</p>
+            
+            <h2>文化象征</h2>
+            <p>伏羲是中华文明的开创者，被尊为"人文始祖"。他创造的八卦对中国古代哲学、天文学、数学等产生了深远影响，是中国传统文化的重要源头。伏羲的形象象征着智慧和创造力，是中华民族精神的重要象征。</p>
+            
+            <h2>出处记载</h2>
+            <p>《山海经·海内东经》："雷泽中有雷神，龙身而人头，鼓其腹。在吴西。"郭璞注："雷神即伏羲也。"</p>
+            <p>《周易·系辞下》："古者包牺氏之王天下也，仰则观象于天，俯则观法于地，观鸟兽之文与地之宜，近取诸身，远取诸物，于是始作八卦，以通神明之德，以类万物之情。"</p>
+            <p>《史记·太史公自序》："余闻之先人曰：'伏羲至纯厚，作易八卦。'"</p>
             
             <a href="#" class="back-button">返回首页</a>
         </div>
@@ -649,7 +768,7 @@
 
     <div id="yi-detail" class="detail-container">
         <div class="detail-header">
-            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvQVpCDn0Ftim-ECrZ6_2LDCMxtCk6gAChx0AAiYWQVSaspxK2VVm_zYE.jpg" alt="女娲.jpg" />
+           <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvS5pCD1OzT8VMHkvZsGmNz-VJmJSPwACvR0AAiYWQVS1-IzxiOpjYjYE.jpg" alt="后羿射日.jpg" />
             <div class="detail-title">
                 <h1>后羿</h1>
                 <p>射日英雄，为民除害</p>
@@ -667,34 +786,241 @@
             <h2>文化影响</h2>
             <p>后羿射日的故事展现了中国古代人民敢于战胜自然灾害的勇气和智慧，也反映了人类对英雄的崇拜。后羿成为勇敢、正义、力量的象征，在中国文化中占有重要地位。</p>
             
+            <h2>出处记载</h2>
+            <p>《山海经·海内经》："帝俊赐羿彤弓素矰，以扶下国，羿是始去恤下地之百艰。"</p>
+            <p>《淮南子·本经训》："尧之时，十日并出，焦禾稼，杀草木，而民无所食。猰貐、凿齿、九婴、大风、封豨、修蛇皆为民害。尧乃使羿诛凿齿于畴华之野，杀九婴于凶水之上，缴大风于青邱之泽，上射十日而下杀猰貐，断修蛇于洞庭，擒封豨于桑林。"</p>
+            
             <a href="#" class="back-button">返回首页</a>
         </div>
     </div>
 
-    <div id="beasts-detail" class="detail-container">
+    
+    <div id="zhurong-detail" class="detail-container">
         <div class="detail-header">
-            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvWNpCEGvT7r-BMUT_GNE2TyYipqfHwAC_x0AAiYWQVSKQog2PVRwJTYE.jpg" alt="麒麟.jpg" />
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEw3FpCIrm80uLqn1LhwREs0sif5HWbAAC7SQAAiYWQVSUAyghBY8qCDYE.jpg" alt="祝融.jpg" />
             <div class="detail-title">
-                <h1>山海经神兽</h1>
-                <p>上古神话中的奇幻生物</p>
+                <h1>祝融</h1>
+                <p>火神，炎帝后裔</p>
             </div>
         </div>
         <div class="detail-content">
-            <h2>九尾狐</h2>
-            <p>九尾狐是中国古代神话传说中的神异动物，也是中国古代神话中的生物，常用来象征祥瑞。出自春秋战国时期编纂的《山海经》，而后传至汉字文化圈日本、朝鲜、越南等东亚国家。《山海经》云："青丘之山，有兽焉，其状如狐而九尾，其音如婴儿，能食人，食者不蛊。"</p>
+            <h2>神话传说</h2>
+            <p>祝融，本名重黎，中国上古神话中的火神、南方神、南岳神、南海神、夏神、灶神，五行神之一。据《山海经》记载，祝融是炎帝的后代，担任黄帝的火正之官，发明了钻木取火，使人类告别了茹毛饮血的时代，被后世尊为火神。</p>
             
-            <h2>应龙</h2>
-            <p>应龙是古代中国神话传说中一种有翼的龙，相传禹治洪水时有应龙以尾画地成江河使水入海。根据《述异记》的描述："龙五百年为角龙，千年为应龙"。应龙称得上是龙中之精了，故长出了翼。</p>
+            <h2>主要事迹</h2>
+            <p>1. 发明取火：祝融教会人类使用火，使人类能够烹饪食物、取暖、照明和防御野兽。</p>
+            <p>2. 与共工之战：祝融与水神共工因争夺天帝之位而大战，最终祝融获胜，共工怒触不周山，导致天塌地陷。</p>
+            <p>3. 诛杀鲧：奉天帝之命，祝融在羽山诛杀了盗取息壤的鲧。</p>
             
-            <h2>麒麟</h2>
-            <p>麒麟是中国古代神话传说中的神兽，据说能活两千年。雄的名麒，雌的名麟，合称麒麟。性情温和，不伤人畜，不践踏花草，故称为仁兽。麒麟的首似龙，形如马，状比鹿，尾若牛尾，背上有五彩毛纹，腹部有黄色毛。</p>
+            <h2>文化影响</h2>
+            <p>祝融作为火神，在中国传统文化中占有重要地位。每年农历正月初七，民间有祭祀火神的习俗，以祈求平安和丰收。祝融也被视为南方的守护神，与北方的水神玄冥相对应。</p>
             
-            <h2>凤凰</h2>
-            <p>凤凰，亦称为朱鸟、丹鸟、火鸟等，是中国古代神话传说中的一对鸟类神兽组合，分有雌雄之别，雄为"凤"，雌为"凰"，合称为凤凰。据《山海经》记载，凤凰二鸟的形状像是普通的鸡，全身上下都是五彩斑斓的羽毛，头上的花纹是"德"字的形状，翅膀上的花纹是"义"字的形状，背部的花纹是"礼"字的形状，胸部的花纹是"仁"字的形状，腹部的花纹是"信"字的形状。</p>
+            <h2>出处记载</h2>
+            <p>《山海经·海外南经》："南方祝融，兽身人面，乘两龙。"</p>
+            <p>《山海经·大荒西经》："颛顼生老童，老童生祝融。"</p>
+            <p>《山海经·海内经》："祝融降处于江水，生共工。"</p>
             
             <a href="#" class="back-button">返回首页</a>
         </div>
     </div>
+
+
+    <div id="kuafu-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEw21pCIpQG1tzJI-fDxyalJMS4kXEmwAC5iQAAiYWQVRlUVmEhkDeiDYE.jpg" alt="夸父.jpg" />
+            <div class="detail-title">
+                <h1>夸父</h1>
+                <p>逐日英雄，不屈的巨人</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>神话传说</h2>
+            <p>夸父是中国古代神话中的巨人族首领，据《山海经》记载，夸父族生活在北方大荒中，个个身材高大，力大无穷。夸父逐日的故事展现了人类挑战自然、不屈不挠的精神。</p>
+            
+            <h2>主要事迹</h2>
+            <p>1. 夸父逐日：夸父为了追赶太阳，从东方出发，一直追到禺谷（太阳落山的地方）。他感到口渴，就喝干了黄河和渭河的水，仍不解渴，又想去喝北方大泽的水，结果在路上渴死了。</p>
+            <p>2. 杖化邓林：夸父死后，他的手杖化作了一片桃林，名为邓林，为后来的行旅之人提供了休息和水源。</p>
+            
+            <h2>文化象征</h2>
+            <p>夸父逐日的故事象征着中华民族勇于探索、坚持不懈、敢于挑战自然的精神。虽然夸父最终失败了，但他的精神激励着后人不断追求和探索未知的世界。</p>
+            
+            <h2>出处记载</h2>
+            <p>《山海经·海外北经》："夸父与日逐走，入日。渴欲得饮，饮于河渭，河渭不足，北饮大泽。未至，道渴而死。弃其杖，化为邓林。"</p>
+            <p>《山海经·大荒北经》："大荒之中，有山名曰成都载天。有人珥两黄蛇，把两黄蛇，名曰夸父。后土生信，信生夸父。"</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+    </div>
+
+    <!-- 神兽详情页：九尾狐 -->
+    <div id="jiuweihu-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvWJpCEGv6DLdor5Z3VTPCyeWY139CwAC_h0AAiYWQVQscNEpof9HajYE.jpg" alt="九尾狐.jpg" />
+            <div class="detail-title">
+                <h1>九尾狐</h1>
+                <p>青丘之山的神秘异兽</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>神话描述</h2>
+            <p>九尾狐是中国古代神话传说中的神异动物，常用来象征祥瑞。据《山海经》记载，九尾狐栖息在青丘之山，形状像狐狸但长着九条尾巴，叫声像婴儿啼哭，能吃人，吃掉它的肉可以不被蛊毒所害。</p>
+            
+            <h2>文化象征</h2>
+            <p>在古代，九尾狐被视为祥瑞之兽，象征着子孙繁荣、婚姻美满。《吴越春秋》中记载，大禹三十岁尚未娶妻，在涂山遇到一只九尾白狐，认为这是吉兆，于是娶涂山氏之女为妻。</p>
+            
+            <h2>演变与影响</h2>
+            <p>随着时间的推移，九尾狐的形象逐渐发生变化。在唐宋以后的文学作品中，九尾狐逐渐被妖化，成为魅惑人心的狐妖形象，如《封神演义》中的苏妲己。但在日本和韩国等东亚国家，九尾狐仍保持着较为正面的形象。</p>
+            
+            <h2>出处记载</h2>
+            <p>《山海经·南山经》："青丘之山，有兽焉，其状如狐而九尾，其音如婴儿，能食人，食者不蛊。"</p>
+            <p>《山海经·海外东经》："青丘国在其北，其狐四足九尾。"</p>
+            <p>《吴越春秋·越王无余外传》："禹三十未娶，行到涂山，恐时之暮，失其度制，乃辞云：'吾娶也，必有应矣。'乃有白狐九尾造于禹。禹曰：'白者，吾之服也。其九尾者，王之证也。涂山之歌曰：绥绥白狐，九尾痝痝。我家嘉夷，来宾为王。成家成室，我造彼昌。天人之际，于兹则行。明矣哉！'禹因娶涂山，谓之女娇。"</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+    </div>
+
+    
+    <div id="yinglong-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvVdpCEExHKIcRdJzn17buWkp6QlDkAAC8R0AAiYWQVRoDtED7hMKyzYE.jpg" alt="应龙.jpg" />
+            <div class="detail-title">
+                <h1>应龙</h1>
+                <p>有翼之龙，战神之属</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>神话描述</h2>
+            <p>应龙是古代中国神话传说中的一种有翼的龙，是龙中之精，故长出了翼。据《述异记》记载："龙五百年为角龙，千年为应龙"。应龙不仅能兴云布雨，还具有强大的战斗力，是黄帝的得力助手。</p>
+            
+            <h2>主要事迹</h2>
+            <p>1. 助黄帝战蚩尤：在黄帝与蚩尤的战争中，应龙蓄水，配合女魃止雨，最终帮助黄帝战胜了蚩尤。</p>
+            <p>2. 助大禹治水：大禹治水时，应龙以尾画地成江河，使水入海，帮助大禹疏导洪水。</p>
+            <p>3. 居南方：应龙在帮助大禹治水后，由于神力耗尽，无法返回天庭，遂居于南方，成为南方之神。</p>
+            
+            <h2>文化意义</h2>
+            <p>应龙在中国传统文化中被视为祥瑞之兆，象征着力量和胜利。应龙的形象常出现在古代的建筑、绘画和雕刻中，尤其是在军事相关的文物中更为常见。</p>
+            
+            <h2>出处记载</h2>
+            <p>《山海经·大荒东经》："大荒东北隅中，有山名曰凶犁土丘。应龙处南极，杀蚩尤与夸父，不得复上，故下数旱。旱而为应龙之状，乃得大雨。"</p>
+            <p>《楚辞·天问》："应龙何画？河海何历？"</p>
+            <p>《淮南子·览冥训》："乘雷车，服驾应龙，骖青虬，援绝瑞，席萝图，黄云络，前白螭，后奔蛇，浮游消摇，道鬼神，登九天，朝帝于灵门。"</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+    </div>
+
+    
+    <div id="qilin-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvWNpCEGvT7r-BMUT_GNE2TyYipqfHwAC_x0AAiYWQVSKQog2PVRwJTYE.jpg" alt="麒麟.jpg" />
+            <div class="detail-title">
+                <h1>麒麟</h1>
+                <p>仁兽之属，祥瑞象征</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>神话描述</h2>
+            <p>麒麟是中国古代神话传说中的神兽，据说能活两千年。雄的名麒，雌的名麟，合称麒麟。麒麟的形状像鹿，独角，全身覆盖着鳞甲，尾似牛尾，全身金黄色，是吉祥的象征。</p>
+            
+            <h2>文化象征</h2>
+            <p>麒麟被视为仁兽，性情温和，不伤人畜，不践踏花草。在古代，麒麟的出现被认为是圣王出世的吉兆，象征着国泰民安、风调雨顺。麒麟也是送子神兽，民间有"麒麟送子"的传说，象征着多子多福。</p>
+            
+            <h2>历史演变</h2>
+            <p>麒麟的形象在历史上不断演变，早期的麒麟形象较为简单，后期逐渐融合了龙、鹿、牛等多种动物的特征，成为一种更加复杂和神秘的生物。麒麟在中国传统文化中的地位仅次于龙，是"四灵"（龙、凤、麒麟、龟）之一。</p>
+            
+            <h2>出处记载</h2>
+            <p>《山海经·西山经》："又西三百二十里，曰槐江之山。丘时之水出焉，而北流注于泑水。其中多蠃母，其上多青雄黄，多藏琅玕、黄金、玉，其阳多丹粟。其了有多采黄金银。实惟帝之平圃，神英招司之，其状马身而人面，虎文而鸟翼，徇于四海，其音如榴。南望昆仑，其光熊熊，其气魂魂。西望大泽，后稷所潜也。其中多玉，其阴多榣木之有若。北望诸龇，槐鬼离仑居之，鹰鹯之所宅也。东望恒山四成，有穷鬼居之，各在一搏。爰有淫水，其清洛洛。有天神焉，其状如牛，而八足二首马尾，其音如勃皇，见则其邑有兵。"</p>
+            <p>《礼记·礼运》："麟、凤、龟、龙，谓之四灵。"</p>
+            <p>《说文解字》："麒，仁兽也，麋身牛尾一角；麟，牝麒也。"</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+    </div>
+
+   
+    <div id="fenghuang-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvWFpCEGvw8HpefZQ3mc_Z7VOm4bfAgAC_R0AAiYWQVRK7A6lyEPxoDYE.jpg" alt="凤凰.jpg" />
+            <div class="detail-title">
+                <h1>凤凰</h1>
+                <p>百鸟之王，祥瑞之兆</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>神话描述</h2>
+            <p>凤凰，亦称为朱鸟、丹鸟、火鸟等，是中国古代神话传说中的一对鸟类神兽组合，分有雌雄之别，雄为"凤"，雌为"凰"，合称为凤凰。据《山海经》记载，凤凰形状像普通的鸡，全身上下都是五彩斑斓的羽毛，头上的花纹是"德"字的形状，翅膀上的花纹是"义"字的形状，背部的花纹是"礼"字的形状，胸部的花纹是"仁"字的形状，腹部的花纹是"信"字的形状。</p>
+            
+            <h2>文化象征</h2>
+            <p>凤凰是百鸟之王，象征着吉祥、和谐和高贵。凤凰的出现被视为圣王出世、天下太平的吉兆。在中国传统文化中，凤凰与龙一起被视为最高贵的神兽，常用来象征皇权和皇后。</p>
+            
+            <h2>凤凰涅槃</h2>
+            <p>凤凰涅槃是一个广为流传的传说，虽然最早源自佛教经典，但在中国传统文化中被赋予了新的含义。传说凤凰每五百年就要自焚一次，在烈火中重生，获得永生。这一传说象征着生命的循环和重生。</p>
+            
+            <h2>出处记载</h2>
+            <p>《山海经·南山经》："丹穴之山，有鸟焉，其状如鸡，五采而文，名曰凤皇，首文曰德，翼文曰义，背文曰礼，膺文曰仁，腹文曰信。是鸟也，饮食自然，自歌自舞，见则天下安宁。"</p>
+            <p>《山海经·大荒西经》："有五彩鸟三名，一曰皇鸟，一曰鸾鸟，一曰凤鸟。"</p>
+            <p>《淮南子·览冥训》："凤凰之翔，至德也，雷霆不作，风雨不兴，川谷不澹，草木不摇。"</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+    </div>
+
+    <!-- 新增神兽详情页：饕餮 -->
+    <div id="taotie-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEw85pCJKTTv3gRQVEYlASTm2GJFgvvgAClhkAAiYWSVRONcZVzdOlXDYE.jpg" alt="饕鬄.jpg" />
+            <div class="detail-title">
+                <h1>饕餮</h1>
+                <p>贪食之兽，暴食象征</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>神话描述</h2>
+            <p>饕餮是中国古代神话传说中的一种神秘怪兽，据《山海经》记载，饕餮形状如羊身人面，眼在腋下，虎齿人手，有首无身。饕餮十分贪吃，见到什么就吃什么，甚至连自己的身体都吃掉了，所以只剩下一个大头和一张大嘴。</p>
+            
+            <h2>文化象征</h2>
+            <p>饕餮在中国传统文化中象征着贪婪和暴食。在古代青铜器上，常有饕餮纹样，被称为"饕餮纹"，这是中国青铜器上最常见的装饰纹样之一。饕餮纹通常表现为一个有角的兽面，大眼、阔口、獠牙，狰狞。</p>
+            
+            <h2>历史记载</h2>
+            <p>据《左传》记载，饕餮是缙云氏的儿子，因为贪婪无度，被舜帝流放到边远地区。后来，饕餮成为四凶之一（饕餮、混沌、穷奇、梼杌），象征着人世间的各种恶德。</p>
+            
+            <h2>出处记载</h2>
+            <p>《山海经·北山经》："吾之山其上多玉，其下多铜。有兽焉，其状如羊身人面，其目在腋下，虎齿人爪，其音如婴儿，名曰狍鸮，是食人。"</p>
+            <p>《左传·文公十八年》："缙云氏有不才子，贪于饮食，冒于货贿，天下谓之饕餮。"</p>
+            <p>《神异经·西南荒经》："西南方有人焉，身多毛，头上戴豕，贪如狼恶，好自积财，而不食人谷，彊者夺老弱者，畏群而击单，名曰饕餮。"</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+    </div>
+
+    <!-- 新增神兽详情页：玄武 -->
+    <div id="xuanwu-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEw9lpCJMQnKsmqKy4Dclc9KFHQedWwQACohkAAiYWSVQxxFtpjZoMojYE.jpg" alt="玄武.jpg" />
+            <div class="detail-title">
+                <h1>玄武</h1>
+                <p>北方之神，龟蛇合体</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>神话描述</h2>
+            <p>玄武是中国古代神话中的北方之神，是道教所奉的五灵之一（青龙、白虎、朱雀、玄武）。玄武的形象是龟蛇合体，龟代表长寿和稳重，蛇代表灵活和神秘。玄武掌管北方，五行属水，是水神。</p>
+            
+            <h2>文化象征</h2>
+            <p>玄武在中国传统文化中象征着长寿、吉祥和权力。在古代，玄武常被用于军事防御，象征着坚固和不可攻破。玄武也是道教的重要神灵，被尊为真武大帝，受到广泛的崇拜。</p>
+            
+            <h2>历史演变</h2>
+            <p>玄武的形象在历史上经历了从最初的龟到龟蛇合体的演变过程。在汉代，玄武已经成为四灵之一，代表北方。到了宋代，玄武被人格化为真武大帝，成为道教中的重要神灵。</p>
+            
+            <h2>出处记载</h2>
+            <p>《楚辞·远游》："召玄武而奔属。"</p>
+            <p>《礼记·曲礼上》："行，前朱鸟而后玄武，左青龙而右白虎。"</p>
+            <p>《淮南子·天文训》："北方水也，其帝颛顼，其佐玄冥，执权而治冬；其神为辰星，其兽玄武。"</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+
 
     <script>
         // 轮播图功能
@@ -780,13 +1106,21 @@
                             container.style.display = 'none';
                         });
                         
-                        // 显示目标详情页
-                        targetElement.style.display = 'block';
-                        
-                        // 滚动到详情页
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
+                        // 如果目标是详情页，则显示它
+                        if (targetElement.classList.contains('detail-container')) {
+                            targetElement.style.display = 'block';
+                            
+                            // 滚动到详情页
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        } else {
+                            // 否则滚动到对应区域
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
                     }
                 });
             });
