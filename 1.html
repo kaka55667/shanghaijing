@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山海经神话世界 - 跨界改编</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "STKaiti", "KaiTi", "SimSun", serif;
+        }
+        
+        body {
+            background-color: #f8f3e6;
+            color: #3a2615;
+            line-height: 1.6;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.1"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="%238B4513" stroke-width="2"/></svg>');
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(to right, #8b0000, #b22222);
+            color: #f0d9b5;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border-bottom: 3px solid #d4af37;
+            position: relative;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #d4af37, #f0d9b5, #d4af37);
+        }
+        
+        .logo {
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 5px;
+            color: #f0d9b5;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #f0d9b5;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 10px;
+        }
+        
+        nav ul li a {
+            color: #f0d9b5;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(240, 217, 181, 0.2);
+            border: 1px solid #d4af37;
+        }
+        
+        /* 轮播图样式 */
+        .carousel-section {
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #8b0000;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #8b0000, transparent);
+            margin: 10px auto;
+        }
+        
+        .carousel {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 5px solid #d4af37;
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: #f0d9b5;
+            padding: 20px;
+        }
+        
+        .carousel-caption h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #d4af37;
+            text-shadow: 1px 1px 2px #000;
+        }
+        
+        .carousel-caption p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+        
+        .carousel-caption a {
+            display: inline-block;
+            background-color: #8b0000;
+            color: #f0d9b5;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: 1px solid #d4af37;
+        }
+        
+        .carousel-caption a:hover {
+            background-color: #b22222;
+        }
+        
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        
+        .carousel-control {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #d4af37;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin: 0 15px;
+            transition: background-color 0.3s;
+            border: 1px solid #d4af37;
+        }
+        
+        .carousel-control:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(212, 175, 55, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: 1px solid #f0d9b5;
+        }
+        
+        .carousel-indicator.active {
+            background-color: #d4af37;
+        }
+        
+        /* 神话人物介绍 */
+        .content-section {
+            margin: 40px 0;
+        }
+        
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .character-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #d4af37;
+            position: relative;
+        }
+        
+        .character-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, #8b0000, #d4af37, #8b0000);
+        }
+        
+        .character-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .character-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid #d4af37;
+        }
+        
+        .character-card-content {
+            padding: 15px;
+        }
+        
+        .character-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #8b0000;
+            text-align: center;
+        }
+        
+        .character-card p {
+            font-size: 0.95rem;
+            color: #3a2615;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .character-card a {
+            display: inline-block;
+            background-color: #8b0000;
+            color: #f0d9b5;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #d4af37;
+        }
+        
+        .character-card a:hover {
+            background-color: #b22222;
+        }
+        
+        /* 详情页样式 */
+        .detail-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 5px solid #d4af37;
+        }
+        
+        .detail-header {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .detail-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .detail-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: #f0d9b5;
+            padding: 20px;
+        }
+        
+        .detail-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
+        
+        .detail-content {
+            padding: 30px;
+        }
+        
+        .detail-content h2 {
+            color: #8b0000;
+            margin: 20px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0e6d2;
+        }
+        
+        .detail-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background-color: #8b0000;
+            color: #f0d9b5;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            border: 1px solid #d4af37;
+        }
+        
+        .back-button:hover {
+            background-color: #b22222;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #3a2615;
+            color: #f0d9b5;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 3px solid #d4af37;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .carousel {
+                height: 350px;
+            }
+            
+            .carousel-caption h3 {
+                font-size: 1.5rem;
+            }
+            
+            .character-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .detail-header {
+                height: 300px;
+            }
+            
+            .detail-title h1 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel {
+                height: 250px;
+            }
+            
+            .carousel-caption h3 {
+                font-size: 1.2rem;
+            }
+            
+            .character-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .detail-header {
+                height: 200px;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 首页 -->
+    <header>
+        <div class="container">
+            <div class="logo">山海经神话世界</div>
+            <div class="subtitle">探索上古神话的奇幻与壮丽</div>
+            <nav>
+                <ul>
+                    <li><a href="#nvwa">女娲</a></li>
+                    <li><a href="#gun">鲧</a></li>
+                    <li><a href="#yu">禹</a></li>
+                    <li><a href="#yi">羿</a></li>
+                    <li><a href="#beasts">山海神兽</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 轮播图 -->
+        <section class="carousel-section">
+            <h2 class="section-title">上古神话传奇</h2>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvQVpCDn0Ftim-ECrZ6_2LDCMxtCk6gAChx0AAiYWQVSaspxK2VVm_zYE.jpg" alt="女娲.jpg" />
+                        <div class="carousel-caption">
+                            <h3>女娲补天</h3>
+                            <p>创世女神女娲炼五色石补天，断鳌足以立四极，拯救苍生于水火之中。</p>
+                            <a href="#nvwa-detail">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvR5pCDxSziFAArUOhAmFrjpnvSDSbgACph0AAiYWQVRSJGTJQJbjqTYE.jpg" alt="i.jpg" />
+                        <div class="carousel-caption">
+                            <h3>鲧禹治水</h3>
+                            <p>鲧盗息壤治水失败，其子禹继承父志，三过家门而不入，终成功治水。</p>
+                            <a href="#gunyu-detail">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvS5pCD1OzT8VMHkvZsGmNz-VJmJSPwACvR0AAiYWQVS1-IzxiOpjYjYE.jpg" alt="后羿射日.jpg" />
+                        <div class="carousel-caption">
+                            <h3>后羿射日</h3>
+                            <p>神射手后羿射落九日，诛杀凶兽，拯救黎民于焦土，功盖千秋。</p>
+                            <a href="#yi-detail">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvUFpCD-ncm3cQueO9AzUkH6pmqdoFgAC0x0AAiYWQVTE9FqJjo6_xDYE.png" alt="设计山海经女娲形象 (4).png" />
+                        <div class="carousel-caption">
+                            <h3>山海经神兽</h3>
+                            <p>探索《山海经》中千奇百怪的神兽与异兽，领略上古先民的奇幻想象。</p>
+                            <a href="#beasts-detail">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control prev">❮</button>
+                    <button class="carousel-control next">❯</button>
+                </div>
+                <div class="carousel-indicators">
+                    <div class="carousel-indicator active"></div>
+                    <div class="carousel-indicator"></div>
+                    <div class="carousel-indicator"></div>
+                    <div class="carousel-indicator"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 神话人物介绍 -->
+        <section class="content-section" id="characters">
+            <h2 class="section-title">神话人物</h2>
+            <div class="character-grid">
+                <div class="character-card" id="nvwa">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvQVpCDn0Ftim-ECrZ6_2LDCMxtCk6gAChx0AAiYWQVSaspxK2VVm_zYE.jpg" alt="女娲.jpg" />
+                    <div class="character-card-content">
+                        <h3>女娲</h3>
+                        <p>创世女神，人类之母，人首蛇身，炼五色石补天，抟土造人，制定婚姻制度。</p>
+                        <a href="#nvwa-detail">查看详情</a>
+                    </div>
+                </div>
+                <div class="character-card" id="gun">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvR5pCDxSziFAArUOhAmFrjpnvSDSbgACph0AAiYWQVRSJGTJQJbjqTYE.jpg" alt="i.jpg" />
+                    <div class="character-card-content">
+                        <h3>鲧</h3>
+                        <p>大禹之父，黄帝的后裔，因盗取天帝息壤治水失败而被处死于羽山。</p>
+                        <a href="#gunyu-detail">查看详情</a>
+                    </div>
+                </div>
+                <div class="character-card" id="yu">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvTtpCD9YBxwF8bMyJmEpqfN3R8OtFAACzR0AAiYWQVRsEkaZTaOvBzYE.jpg" alt="大禹.jpg" />
+                    <div class="character-card-content">
+                        <h3>大禹</h3>
+                        <p>治水英雄，夏朝开国君主，继承父志治水成功，三过家门而不入。</p>
+                        <a href="#gunyu-detail">查看详情</a>
+                    </div>
+                </div>
+                <div class="character-card" id="yi">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvS5pCD1OzT8VMHkvZsGmNz-VJmJSPwACvR0AAiYWQVS1-IzxiOpjYjYE.jpg" alt="后羿射日.jpg" />
+                    <div class="character-card-content">
+                        <h3>后羿</h3>
+                        <p>神射手，尧帝时期英雄，射落九日，诛杀凶兽，为民除害。</p>
+                        <a href="#yi-detail">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 山海经神兽 -->
+        <section class="content-section" id="beasts">
+            <h2 class="section-title">山海经神兽</h2>
+            <div class="character-grid">
+                <div class="character-card">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvWJpCEGv6DLdor5Z3VTPCyeWY139CwAC_h0AAiYWQVQscNEpof9HajYE.jpg" alt="九尾狐.jpg" />
+                    <div class="character-card-content">
+                        <h3>九尾狐</h3>
+                        <p>青丘之山有兽焉，其状如狐而九尾，其音如婴儿，能食人，食者不蛊。</p>
+                        <a href="#beasts-detail">查看详情</a>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvVdpCEExHKIcRdJzn17buWkp6QlDkAAC8R0AAiYWQVRoDtED7hMKyzYE.jpg" alt="应龙.jpg" />
+                    <div class="character-card-content">
+                        <h3>应龙</h3>
+                        <p>龙五百年为角龙，千年为应龙，助黄帝战胜蚩尤，后又助大禹治水。</p>
+                        <a href="#beasts-detail">查看详情</a>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvWNpCEGvT7r-BMUT_GNE2TyYipqfHwAC_x0AAiYWQVSKQog2PVRwJTYE.jpg" alt="麒麟.jpg" />
+                    <div class="character-card-content">
+                        <h3>麒麟</h3>
+                        <p>仁兽也，麋身牛尾一角，不履生虫，不折生草，有王者则至，无王者则不至。</p>
+                        <a href="#beasts-detail">查看详情</a>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvWFpCEGvw8HpefZQ3mc_Z7VOm4bfAgAC_R0AAiYWQVRK7A6lyEPxoDYE.jpg" alt="凤凰.jpg" />
+                    <div class="character-card-content">
+                        <h3>凤凰</h3>
+                        <p>丹穴之山有鸟焉，其状如鸡，五采而文，名曰凤皇，首文曰德，翼文曰义。</p>
+                        <a href="#beasts-detail">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+   
+
+    <!-- 详情页内容 -->
+    <div id="nvwa-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvQVpCDn0Ftim-ECrZ6_2LDCMxtCk6gAChx0AAiYWQVSaspxK2VVm_zYE.jpg" alt="女娲.jpg" />
+            <div class="detail-title">
+                <h1>女娲</h1>
+                <p>创世女神，人类之母</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>神话传说</h2>
+            <p>女娲是中国上古神话中的创世女神，人首蛇身。传说她抟土造人，创造了人类社会。又传说女娲补天，即自然界发生了一场特大灾害，天塌地陷，猛禽恶兽都出来残害百姓。女娲熔炼五色石来修补苍天，又杀死恶兽猛禽，重立四极天柱，平整天地。另外传说女娲制造了笙簧等乐器，制定了婚姻制度。</p>
+            
+            <h2>主要事迹</h2>
+            <p>1. 抟土造人：女娲用黄土仿照自己造成了人，创造了人类社会。</p>
+            <p>2. 炼石补天：水神共工与火神祝融交战，共工败而怒触不周山，导致天塌陷，天河之水注入人间。女娲不忍人类受灾，炼五色石补天，折神鳖之足撑四极，平洪水杀猛兽，人类始得以安居。</p>
+            <p>3. 创立婚姻：女娲为人类建立了婚姻制度，使青年男女相互婚配，繁衍后代。</p>
+            
+            <h2>文化影响</h2>
+            <p>女娲是中华民族的共同人文始祖，是中华民族的母亲。女娲文化源远流长、博大精深，内容丰富，是史前文明和中华民族优秀的传统文化，也是已经开展的中国史前文明探源的重要研究对象。</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+    </div>
+
+    <div id="gunyu-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvQVpCDn0Ftim-ECrZ6_2LDCMxtCk6gAChx0AAiYWQVSaspxK2VVm_zYE.jpg" alt="女娲.jpg" />
+            <div class="detail-title">
+                <h1>鲧禹治水</h1>
+                <p>父子两代的治水传奇</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>鲧的传说</h2>
+            <p>鲧是中国上古时代汉族神话传说人物，黄帝的后代，大禹的父亲。鲧因治水失败，被刑罚致死。鲧死后尸体三年不腐烂，祝融用吴刀剖开他的肚子，禹就出来了，鲧的尸体化为黄熊。</p>
+            
+            <h2>大禹治水</h2>
+            <p>禹，姒姓夏后氏，名文命，号禹，后世尊称大禹，是黄帝轩辕氏玄孙。通过禅让制得到帝位，传说是夏后氏部落的首领，是子承父位、中国奴隶制的创始人。禹是中国人民最敬重的古帝王之一，以治理洪水而闻名。</p>
+            <p>大禹治水13年，耗尽心血与体力，"三过家门而不入"，终于完成了这一件名垂青史的大业。他采用疏导的方法，把平地的积水导入江河，再引入海洋，终于制服了洪水，使老百姓得以从高地迁回平川居住和从事农业生产。</p>
+            
+            <h2>历史意义</h2>
+            <p>大禹治水不仅是一种历史记载，更是一种文化象征，代表着中华民族与自然抗争、自强不息的精神。大禹治水的成功，为夏朝的建立奠定了基础，也开创了中国历史上第一个世袭制王朝。</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+    </div>
+
+    <div id="yi-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvQVpCDn0Ftim-ECrZ6_2LDCMxtCk6gAChx0AAiYWQVSaspxK2VVm_zYE.jpg" alt="女娲.jpg" />
+            <div class="detail-title">
+                <h1>后羿</h1>
+                <p>射日英雄，为民除害</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>神话传说</h2>
+            <p>后羿，本称羿，是中国古代神话传说中的人物，擅于射箭。曾助尧帝射九日，并射杀猛兽长蛇，为民除害。传说十日齐出，祸害苍生。天帝帝俊赐给羿（后羿）红色的弓、白色的箭，命他下凡到人间，一方面帮助人类，同时也整顿人间界的秩序。</p>
+            
+            <h2>主要事迹</h2>
+            <p>1. 射落九日：当时十日并出，庄稼枯死，民不聊生，羿射落其中九个太阳，只留一个太阳，使温度适宜人们居住。</p>
+            <p>2. 诛杀凶兽：羿还诛杀猰貐、凿齿、九婴、大风、封豨、修蛇等凶兽，为民除害。</p>
+            <p>3. 求取仙药：羿向西王母求得不死药，但被其妻嫦娥偷吃，嫦娥飞升月宫成为月神。</p>
+            
+            <h2>文化影响</h2>
+            <p>后羿射日的故事展现了中国古代人民敢于战胜自然灾害的勇气和智慧，也反映了人类对英雄的崇拜。后羿成为勇敢、正义、力量的象征，在中国文化中占有重要地位。</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+    </div>
+
+    <div id="beasts-detail" class="detail-container">
+        <div class="detail-header">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEEvWNpCEGvT7r-BMUT_GNE2TyYipqfHwAC_x0AAiYWQVSKQog2PVRwJTYE.jpg" alt="麒麟.jpg" />
+            <div class="detail-title">
+                <h1>山海经神兽</h1>
+                <p>上古神话中的奇幻生物</p>
+            </div>
+        </div>
+        <div class="detail-content">
+            <h2>九尾狐</h2>
+            <p>九尾狐是中国古代神话传说中的神异动物，也是中国古代神话中的生物，常用来象征祥瑞。出自春秋战国时期编纂的《山海经》，而后传至汉字文化圈日本、朝鲜、越南等东亚国家。《山海经》云："青丘之山，有兽焉，其状如狐而九尾，其音如婴儿，能食人，食者不蛊。"</p>
+            
+            <h2>应龙</h2>
+            <p>应龙是古代中国神话传说中一种有翼的龙，相传禹治洪水时有应龙以尾画地成江河使水入海。根据《述异记》的描述："龙五百年为角龙，千年为应龙"。应龙称得上是龙中之精了，故长出了翼。</p>
+            
+            <h2>麒麟</h2>
+            <p>麒麟是中国古代神话传说中的神兽，据说能活两千年。雄的名麒，雌的名麟，合称麒麟。性情温和，不伤人畜，不践踏花草，故称为仁兽。麒麟的首似龙，形如马，状比鹿，尾若牛尾，背上有五彩毛纹，腹部有黄色毛。</p>
+            
+            <h2>凤凰</h2>
+            <p>凤凰，亦称为朱鸟、丹鸟、火鸟等，是中国古代神话传说中的一对鸟类神兽组合，分有雌雄之别，雄为"凤"，雌为"凰"，合称为凤凰。据《山海经》记载，凤凰二鸟的形状像是普通的鸡，全身上下都是五彩斑斓的羽毛，头上的花纹是"德"字的形状，翅膀上的花纹是"义"字的形状，背部的花纹是"礼"字的形状，胸部的花纹是"仁"字的形状，腹部的花纹是"信"字的形状。</p>
+            
+            <a href="#" class="back-button">返回首页</a>
+        </div>
+    </div>
+
+    <script>
+        // 轮播图功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselInner = document.querySelector('.carousel-inner');
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const prevButton = document.querySelector('.carousel-control.prev');
+            const nextButton = document.querySelector('.carousel-control.next');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            
+            let currentIndex = 0;
+            const totalItems = carouselItems.length;
+            
+            // 更新轮播图状态
+            function updateCarousel() {
+                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // 更新指示器
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            // 下一张
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            }
+            
+            // 上一张
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                updateCarousel();
+            }
+            
+            // 自动播放
+            let autoPlay = setInterval(nextSlide, 5000);
+            
+            // 事件监听
+            nextButton.addEventListener('click', function() {
+                clearInterval(autoPlay);
+                nextSlide();
+                autoPlay = setInterval(nextSlide, 5000);
+            });
+            
+            prevButton.addEventListener('click', function() {
+                clearInterval(autoPlay);
+                prevSlide();
+                autoPlay = setInterval(nextSlide, 5000);
+            });
+            
+            // 指示器点击事件
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    clearInterval(autoPlay);
+                    currentIndex = index;
+                    updateCarousel();
+                    autoPlay = setInterval(nextSlide, 5000);
+                });
+            });
+            
+            // 鼠标悬停暂停自动播放
+            const carousel = document.querySelector('.carousel');
+            carousel.addEventListener('mouseenter', function() {
+                clearInterval(autoPlay);
+            });
+            
+            carousel.addEventListener('mouseleave', function() {
+                autoPlay = setInterval(nextSlide, 5000);
+            });
+            
+            // 详情页导航
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // 隐藏所有详情页
+                        document.querySelectorAll('.detail-container').forEach(container => {
+                            container.style.display = 'none';
+                        });
+                        
+                        // 显示目标详情页
+                        targetElement.style.display = 'block';
+                        
+                        // 滚动到详情页
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // 返回按钮功能
+            document.querySelectorAll('.back-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 隐藏所有详情页
+                    document.querySelectorAll('.detail-container').forEach(container => {
+                        container.style.display = 'none';
+                    });
+                    
+                    // 滚动到顶部
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // 初始隐藏所有详情页
+            document.querySelectorAll('.detail-container').forEach(container => {
+                container.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
